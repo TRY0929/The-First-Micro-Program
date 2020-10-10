@@ -1,1 +1,7 @@
-<v-like></v-like>
+<v-episode></v-episode>
+<v-like
+        like="{{latest.like_status}}"
+        count="{{latest.fav_nums}}"
+        bind:like="onlike"
+></v-like>
+<v-movie bgImg="{{latest.image}}" contents="{{latest.content}}"></v-movie>
