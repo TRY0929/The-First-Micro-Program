@@ -10,23 +10,53 @@ Page({
    * 页面的初始数据
    */
   data: {
-    latest: null
+    latest: null,
+    first: false,
+    last: true,
+    likeStatus: false,
+    likeCount: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    classicModel.getLatest(res => {
+    classicModel.getLatest().then(res => {
       this.setData({
-        latest: res
+        latest: res,
+        likeStatus: res.like_status,
+        likeCount: res.fav_nums
       })
-      console.log(this.data.latest)
     })
   },
   onlike (event) {
     let behavior = event.detail.behavior
     likeModel.like(behavior, this.data.latest.id, this.data.latest.type)
+  },
+  onPrev () {
+    this._updateClassic('previous')
+  },
+  onNext () {
+    this._updateClassic('next')
+  },
+  _updateClassic (prevOrNext) {
+    let index = this.data.latest.index
+    classicModel.getClassic(index, prevOrNext).then(res => {
+      this._getLikeStatus(res.id, res.type)
+      this.setData({
+        latest: res,
+        last: classicModel.isLatest(res.index),
+        first: classicModel.isFirst(res.index)
+      })
+    })
+  },
+  _getLikeStatus (artId, category) {
+    likeModel.getClassicLikeStatus(artId, category).then(res => {
+      this.setData({
+        likeCount: res.fav_nums,
+        likeStatus: res.like_status
+      })
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

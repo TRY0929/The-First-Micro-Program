@@ -1,24 +1,26 @@
-// components/classic/episode/index.js
+// components/image-button/index.js
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    index: Number
+    openType: {
+      type: String
+    }
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-    year: 2020,
-    month: 1
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-
+    getUserInfo (event) {
+      this.triggerEvent('getuserinfo', event.detail)
+    }
   }
 })

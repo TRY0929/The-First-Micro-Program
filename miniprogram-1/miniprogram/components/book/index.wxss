@@ -1,0 +1,48 @@
+/* components/book/index.wxss */
+.container {
+    height: 360rpx;
+    width: 240rpx;
+    box-shadow: 2px 2px 3px #e3e3e3;
+    position: relative;
+    border-radius: 10rpx;
+}
+.bookImg {
+    height: 360rpx;
+    width: 240rpx;
+}
+.description {
+    z-index: 1;
+    width: 100%;
+    height: 120rpx;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: #fff;
+    padding: 10rpx;
+    box-sizing: border-box;
+}
+.title, .author {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.title {
+    font-size: 24rpx;
+}
+.author {
+    font-size: 20rpx;
+    color: #999;
+}
+.like {
+    width: 100%;
+    margin-top: 4rpx;
+    text-align: right;
+}
+.likeCount {
+    font-size: 20rpx;
+    color: #333;
+}
+.likeText {
+    font-size: 20rpx;
+    color: #333;
+}

@@ -1,0 +1,161 @@
+/* miniprogram/pages/book-detail/book-detail.wxss */
+.container {
+    background-color: #f5f5f5;
+    width: 100%;
+}
+.detail-header {
+    background-color: #fff;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: 40rpx 0;
+}
+.detail-image {
+    width: 200rpx;
+    height: 300rpx;
+    box-shadow:2px 2px 3px #e3e3e3;
+}
+.detail-title {
+    font-size: 32rpx;
+    margin: 20rpx 0 10rpx 0;
+    line-height: 34rpx;
+}
+.detail-author {
+    font-size: 24rpx;
+    line-height: 26rpx;
+    color: #999;
+}
+.sub-container {
+    padding: 30rpx;
+    margin-top: 30rpx;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+.sub-title-container {
+    width: 100%;
+    height: 70rpx;
+    text-align: center;
+}
+.sub-title-text {
+    font-size: 32rpx;
+    font-weight: 700;
+}
+.comment-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+}
+.comment-item {
+    margin-right: 10rpx;
+    margin-bottom: 15rpx;
+    border-radius: 15rpx;
+    background-color: #f5f5f5;
+}
+.comment-num {
+    margin-right: 10rpx;
+    margin-left: 6rpx;
+    font-size: 22rpx;
+    color: #aaa;
+}
+.summary-wrapper {
+    width: 100%;
+}
+.summary-text {
+    text-indent: 58rpx;
+    font-weight: 500;
+    line-height: 32rpx;
+    font-size: 32rpx;
+}
+.ex-tag-first {
+    background-color: #fffbdd !important;
+}
+.ex-tag-second {
+    background-color: #eefbff !important;
+}
+.info-container {
+}
+.info-item {
+    line-height: 56rpx;
+    display: flex;
+}
+.title {
+    color: #aaa;
+    flex: 0 0 150rpx;
+}
+.info {
+    flex: 1;
+}
+.book-info {
+    margin-bottom: 100rpx;
+}
+.detail-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    height: 100rpx;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 1rpx -1rpx 1rpx #e3e3e3;
+    padding: 20rpx;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+.comment-fake {
+    height: 100%;
+    width: 460rpx;
+    border-radius: 40rpx;
+    border: 1px solid #666;
+    display: flex;
+    align-items: center;
+    color: #666;
+    font-size: 28rpx;
+    padding: 0 20rpx;
+    box-sizing: border-box;
+    margin-right: 90rpx;
+}
+.comment-toast {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    z-index: 101;
+    padding: 30rpx;
+    box-sizing: border-box;
+}
+.comment-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.comment-title {
+    font-size: 28rpx;
+    color: #aaa;
+}
+.comment-cancel {
+    font-size: 32rpx;
+    color: #333;
+}
+.comment-tag {
+    margin-top: 60rpx;
+    margin-bottom: 30rpx;
+}
+.comment-input-wrapper {
+    height: 60rpx;
+    width: 100%;
+    box-sizing: border-box;
+}
+.comment-input {
+    width: 100%;
+    height: 100%;
+    border-radius: 20rpx;
+    font-size: 28rpx;
+    color: #333;
+    background-color: #f3f3f3;
+    padding: 10rpx 20rpx;
+    box-sizing: border-box;
+}
+

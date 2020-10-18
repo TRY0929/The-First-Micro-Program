@@ -1,6 +1,7 @@
 .container {
     display: flex;
     padding-top: 10rpx;
+    width: 90rpx;
 }
 .container .container-image {
     height: 32rpx;

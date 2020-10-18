@@ -1,16 +1,12 @@
 // components/classic/movie/index.js
+import {behavior} from "../classic-bah";
 
 Component({
   /**
    * 组件的属性列表
    */
+  behaviors: [behavior],
   properties: {
-    contents: {
-      type: String
-    },
-    bgImg: {
-      type: String
-    }
   },
 
   /**

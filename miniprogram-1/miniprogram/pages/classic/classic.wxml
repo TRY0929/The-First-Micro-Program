@@ -1,7 +1,49 @@
-<v-episode></v-episode>
-<v-like
-        like="{{latest.like_status}}"
-        count="{{latest.fav_nums}}"
-        bind:like="onlike"
-></v-like>
-<v-movie bgImg="{{latest.image}}" contents="{{latest.content}}"></v-movie>
+<view class="container">
+    <view class="header">
+        <v-episode index="{{latest.index}}" class="episode"></v-episode>
+        <view class="like-container">
+            <v-like
+                    like="{{likeStatus}}"
+                    count="{{likeCount}}"
+                    bind:like="onlike"
+                    class="like"
+            ></v-like>
+            <v-button
+                    open-type="share"
+                    class="share-btn"
+            >
+                <image class="share" src="/images/icon/share.png"></image>
+            </v-button>
+        </view>
+    </view>
+    <v-movie
+            bgImg="{{latest.image}}"
+            contents="{{latest.content}}"
+            hidden="{{latest.type !== 100}}"
+    ></v-movie>
+<!--    <v-music-->
+<!--            bgImg="{{latest.image}}"-->
+<!--            contents="{{latest.content}}"-->
+<!--            hidden="{{latest.type !== 200}}"-->
+<!--            musicSrc="{{latest.url}}"-->
+<!--    ></v-music>-->
+    <v-music
+            bgImg="{{latest.image}}"
+            contents="{{latest.content}}"
+            wx:if="{{latest.type === 200}}"
+            musicSrc="{{latest.url}}"
+    ></v-music>
+    <v-essay
+            bgImg="{{latest.image}}"
+            contents="{{latest.content}}"
+            hidden="{{latest.type !== 300}}"
+    ></v-essay>
+    <v-nav
+            title="{{latest.title}}"
+            first="{{first}}"
+            latest="{{last}}"
+            class="nav"
+            bind:left="onNext"
+            bind:right="onPrev"
+    ></v-nav>
+</view>

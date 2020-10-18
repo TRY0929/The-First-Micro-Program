@@ -1,0 +1,72 @@
+<!--components/search/index.wxml-->
+<view class="container">
+    <view class="search-header">
+        <view class="search-input-wrapper">
+            <view class="search-icon-wrapper">
+                <image class="search-icon" src="./images/search.png"></image>
+            </view>
+            <input
+                    type="text"
+                    class="search-input"
+                    placeholder="书籍名"
+                    focus="{{true}}"
+                    confirm-type="search"
+                    bind:confirm="onInputConfirm"
+                    value="{{inputValue}}"
+            />
+            <view class="search-icon-wrapper" bind:tap="onInputCancelTap">
+                <image class="search-icon" src="./images/cancel.png"></image>
+            </view>
+        </view>
+        <view class="search-cancel-wrapper" bind:tap="onCancelTap">
+            <text class="search-cancel-text">取消</text>
+        </view>
+    </view>
+    <view class="sub-search-wrapper" wx:if="{{!onSearching}}">
+        <view class="sub-search-header">
+            <view class="line"></view>
+            <text class="sub-search-title">历史搜索</text>
+        </view>
+        <view class="sub-container">
+            <view class="keyword-wrapper">
+                <block wx:for="{{historyWords}}" wx:key="index">
+                    <v-tag
+                            class="keyword-item"
+                            content="{{item}}"
+                            bind:tapping="onHotWordTap"
+                    >
+                    </v-tag>
+                </block>
+            </view>
+        </view>
+    </view>
+    <view class="sub-search-wrapper" wx:if="{{!onSearching}}">
+        <view class="sub-search-header">
+            <view class="line"></view>
+            <text class="sub-search-title">热门搜索</text>
+        </view>
+        <view class="sub-container">
+            <view class="keyword-wrapper">
+                <block wx:for="{{hotWords}}" wx:key="index">
+                    <v-tag
+                            class="keyword-item"
+                            content="{{item}}"
+                            bind:tapping="onHotWordTap"
+                    >
+                    </v-tag>
+                </block>
+            </view>
+        </view>
+    </view>
+    <view class="content-container" wx:if="{{searchBook.length > 0}}">
+        <view class="book-container">
+            <block wx:for="{{searchBook}}" wx:key="{{item.id}}">
+                <v-book class="book" book="{{item}}">
+                </v-book>
+            </block>
+        </view>
+    </view>
+    <view class="no-result" wx:if="{{onSearching && searchBook.length === 0}}">没有搜索到书籍</view>
+    <v-loading wx:if="{{loadingCenter}}" class="loading-center"></v-loading>
+    <v-loading wx:if="{{loading}}" class="loading"></v-loading>
+</view>

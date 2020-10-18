@@ -1,14 +1,45 @@
 {
   "pages": [
-    "pages/classic/classic"
+    "pages/classic/classic",
+    "pages/book/index",
+    "pages/my/index",
+    "pages/book-detail/book-detail"
   ],
   "window": {
     "navigationBarTitleText": "Hello",
-    "navigationBarBackgroundColor": "#000000",
-    "navigationBarTextStyle": "white",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
     "backgroundColor": "#eee",
     "backgroundTextStyle": "light",
     "enablePullDownRefresh": true
   },
-  "sitemapLocation": "sitemap44.json"
+  "sitemapLocation": "sitemap44.json",
+  "requiredBackgroundModes": [
+    "audio"
+  ],
+  "tabBar": {
+    "color": "#c7c7c7",
+    "backgroundColor": "#ffffff",
+    "selectedColor": "#000000",
+    "list": [
+      {
+        "pagePath": "pages/classic/classic",
+        "text": "流行",
+        "iconPath": "/images/tab/classic.png",
+        "selectedIconPath": "/images/tab/classic@highlight.png"
+      },
+      {
+        "pagePath": "pages/book/index",
+        "text": "书籍",
+        "iconPath": "/images/tab/book.png",
+        "selectedIconPath": "/images/tab/book@highlight.png"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "text": "喜欢",
+        "iconPath": "/images/tab/my.png",
+        "selectedIconPath": "/images/tab/my@highlight.png"
+      }
+    ]
+  }
 }

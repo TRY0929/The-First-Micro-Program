@@ -1,0 +1,90 @@
+<!--miniprogram/pages/book-detail/book-detail.wxml-->
+<wxs src="../../utils/filter.wxs" module="utils"></wxs>
+<view class="container">
+    <view class="detail-header">
+        <image class="detail-image" src="{{detail.image}}"></image>
+        <text class="detail-title">{{detail.title}}</text>
+        <block wx:for="{{detail.author}}" wx:key="index">
+            <text class="detail-author">{{item}}</text>
+        </block>
+    </view>
+    <view class="sub-container">
+        <view class="sub-title-container">
+            <text class="sub-title-text">短评</text>
+        </view>
+        <view class="comment-wrapper">
+            <block wx:for="{{utils.limit(comments.comments, 15)}}" wx:key="index">
+                <v-tag
+                        class="comment-item"
+                        content="{{item.content}}"
+                        tag-class="{{index === 0 ? 'ex-tag-first' : (index === 1 ? 'ex-tag-second' : '')}}"
+                >
+                    <text class="comment-num">+{{item.nums}}</text>
+                </v-tag>
+            </block>
+        </view>
+    </view>
+    <view class="sub-container">
+        <view class="sub-title-container">
+            <text class="sub-title-text">内容简介</text>
+        </view>
+        <view class="summary-wrapper">
+            <text class="summary-text" decode="{{true}}">{{utils.format(detail.summary)}}</text>
+        </view>
+    </view>
+    <view class="sub-container book-info">
+        <view class="sub-title-container">
+            <view class="sub-title-text">书本信息</view>
+        </view>
+        <view class="info-container">
+            <view class="info-item">
+                <text class="title">出版社</text>
+                <text class="info">{{detail.publisher}}</text>
+            </view>
+            <view class="info-item">
+                <text class="title">出版年</text>
+                <text class="info">{{detail.pubdate}}</text>
+            </view>
+            <view class="info-item">
+                <text class="title">页数</text>
+                <text class="info">{{detail.pages}}</text>
+            </view>
+            <view class="info-item">
+                <text class="title">定价</text>
+                <text class="info">{{detail.price}}</text>
+            </view>
+            <view class="info-item">
+                <text class="title">装帧</text>
+                <text class="info">{{detail.binding}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="detail-footer">
+        <view class="comment-fake" bind:tap="onShowCommentTap">输入短评</view>
+        <view class="like-container">
+            <v-like like="{{likeStatus}}" count="{{likeCount}}" bind:like="onLike"></v-like>
+        </view>
+    </view>
+    <view class="comment-toast" hidden="{{!showComment}}">
+        <view class="comment-header">
+            <text class="comment-title">仅可点击标题+1</text>
+            <text class="comment-cancel" bind:tap="onCommentCancelTap">取消</text>
+        </view>
+        <view class="comment-tag comment-wrapper">
+            <block wx:for="{{utils.limit(comments.comments, 3)}}" wx:key="index">
+                <v-tag
+                        class="comment-item"
+                        content="{{item.content}}"
+                        tag-class="{{index === 0 ? 'ex-tag-first' : (index === 1 ? 'ex-tag-second' : '')}}"
+                        bind:tapping="onTagTap"
+                >
+                    <text class="comment-num">+{{item.nums}}</text>
+                </v-tag>
+            </block>
+        </view>
+        <view class="comment-input-wrapper">
+            <input type="text" placeholder="短评最多12个字" class="comment-input" bind:confirm="onPost"/>
+        </view>
+    </view>
+</view>
+<v-mask wx:if="{{showComment}}" bind:maskTap="onMaskTap"></v-mask>
